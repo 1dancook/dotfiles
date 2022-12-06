@@ -184,7 +184,7 @@ let g:indentguides_tabchar = '|'
 " see help provider-python
 " pip install pynvim
 " pyenv which python <- use that path here
-let g:python3_host_prog=expand(~/.pyenv/versions/3.11.0/bin/python)
+let g:python3_host_prog=expand("~")."/.pyenv/versions/3.11.0/bin/python"
 
 " turn off swap files
 set noswapfile
