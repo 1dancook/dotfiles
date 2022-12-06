@@ -9,6 +9,7 @@ plugins=(
   taskwarrior
 )
 
+source /opt/homebrew/opt/spaceship/spaceship.zsh #brew install spaceship
 source ~/.zsh-theme-settings
 source ~/.exports
 source ~/.aliases
