@@ -2,7 +2,9 @@
 
 # This is not a standard dotfile for zsh, here for convenience
 
-ZSH_THEME="spaceship"
+#ZSH_THEME="spaceship" # don't need this -- 
+# install spaceship with brew install spaceship
+# need to source the .zsh script from brew directory
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor root line)
 ZSH_HIGHLIGHT_PATTERNS=('rm -rf *' 'fg=white,bold,bg=red')
