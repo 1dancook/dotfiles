@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/Users/danielcook/Dropbox/ministry/chord-charts/all-in-one/txt'
+let g:netrw_dirhist_1='/Users/danielcook/Dropbox/.dotfiles/scripts'
+let g:netrw_dirhist_0='/Users/danielcook/Dropbox/.dotfiles'
+let g:netrw_dirhist_9='/Users/danielcook/Dropbox/software-development/markdownfile'
+let g:netrw_dirhist_8='/Users/danielcook/Dropbox/webdev/bunkyo-website/docs/posts'
+let g:netrw_dirhist_7='/Users/danielcook/Dropbox/webdev/bunkyo-website/theme'
+let g:netrw_dirhist_6='/Users/danielcook/Dropbox/webdev/bunkyo-website'
+let g:netrw_dirhist_5='/Users/danielcook/Dropbox/webdev/bunkyo-website/theme'
+let g:netrw_dirhist_4='/Users/danielcook/Dropbox/webdev/bunkyo-website'
+let g:netrw_dirhist_3='/Users/danielcook/Dropbox/webdev/bunkyo-website/theme'

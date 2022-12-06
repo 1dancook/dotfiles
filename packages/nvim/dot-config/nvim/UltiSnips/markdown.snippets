@@ -1,0 +1,232 @@
+snippet msgmeta "Insert meta data block for scripture message"
+---
+date: 
+topic: # what is this about?
+description: # describe the message
+location: Bunkyo Gospel Centre
+---
+endsnippet
+
+snippet maru "Insert Maru symbol"
+⭕️
+endsnippet
+
+snippet batsu "Insert batsu symbol"
+❌
+endsnippet
+
+global !p
+
+def add_line(line):
+	snip.rt += line + '\n'
+endglobal
+
+
+
+snippet mmtext  "One line Textbox selection for answer"
+<input class="required" title="P1,${0:${VISUAL:ANSWER}},oneof">
+endsnippet
+
+snippet mmtrue "True or False w/ True Answer" 
+<ol class="yesnoselection required" title="P1,,">
+<li title="P1,1,">True</li>
+<li title="P,,">False</li>
+</ol>
+$0
+endsnippet
+
+snippet mmfalse "True or False w/ False Answer" 
+<ol class="yesnoselection required" title="P1,,">
+<li title="P,,">True</li>
+<li title="P1,1,">False</li>
+</ol>
+$0
+endsnippet
+
+
+snippet mmmultione "Multiple Choice, One Answer"
+<!--multiple choice, one answer-->
+`!p
+snip.rt=''
+
+lines = snip.v.text.strip().split('\n')
+
+add_line(f'<ol class="queryselection required genc_s__" title="P1,,">')
+
+import random
+random.shuffle(lines)
+for item in lines:
+	titletext = 'P,,' # not answer
+	answer = ''
+	if item.strip().lower().startswith('[x]'):
+		titletext = 'P1,1' #answer
+		answer = '<!--answer-->'
+		item = item.strip()[3:]
+	add_line(f'<li title="{titletext}">{item.strip()}</li>{answer}')
+
+add_line('</ol>')
+
+if not snip.c:
+	snip.rv = snip.rt.strip()
+`
+$0
+endsnippet
+# some comment
+
+snippet mmmultix "Multiple Choice, Multiple Answers (Exact)"
+<!--multiple choice, multiple answers (exact)-->
+`!p
+snip.rt=''
+
+lines = snip.v.text.strip().split('\n')
+
+add_line(f'<ol class="powerselection required genc_m__" title="PFINALSCORE,,">')
+
+import random
+random.shuffle(lines)
+n = 0    # need to tally up the answers for the final score.
+for item in lines:
+	titletext = 'P,,' # not answer
+	answer = ''
+	if item.strip().lower().startswith('[x]'):
+		n += 1
+		titletext = 'P1,1' #answer
+		answer = '<!--answer-->'
+		item = item.strip()[3:]
+	add_line(f'<li title="{titletext}">{item.strip()}</li>{answer}')
+
+add_line('</ol>')
+
+snip.rt = snip.rt.replace('FINALSCORE',str(n))
+
+if not snip.c:
+	snip.rv = snip.rt.strip()
+`
+$0
+endsnippet
+
+snippet mmdrop "Dropdown Menu Selection"
+<!--dropdown menu selection - one answer -->
+`!p
+snip.rt=''
+
+lines = snip.v.text.strip().split('\n')
+
+add_line('<ol class="pulldownselection required" title="P1,,">')
+
+import random
+random.shuffle(lines)
+
+for item in lines:
+	titletext = 'P,,' # not answer
+	answer = ''
+	if item.strip().lower().startswith('[x]'):
+		titletext = 'P1,1' #answer
+		answer = '<!--answer-->'
+		item = item.strip()[3:]
+	add_line(f'<li title="{titletext}">{item.strip()}</li>{answer}')
+
+add_line('</ol>')
+if not snip.c:
+	snip.rv = snip.rt.strip()
+`
+$0
+endsnippet
+
+
+snippet mmorder "Put the choices in the right order"
+<!-- THERE IS A PROBLEM WITH THE OUTPUT OF THIS -->
+I THINK THE ANSWER KEY IS WRONG AND NEEDS TO BE BASED ON NUMBERS NOT LETTERS
+<!-- Order: put the choices in the right order -->
+`!p
+snip.rt = ''
+lines = snip.v.text.strip().split('\n')
+n = len(lines)
+
+add_line(f'<ol class="permutation required genc_p__" title="P{n},ANSWERKEY,">')
+
+lines = [(x,text) for x,text in enumerate(lines)]
+
+import random
+random.shuffle(lines)
+
+answer_key = ''
+for i in range(0,n):
+	for x, item in enumerate(lines):
+		if i == item[0]:
+			answer_key += f"{chr(x+97)}%2C"
+
+snip.rt = snip.rt.replace('ANSWERKEY', answer_key[:-3])
+
+for item in lines:
+	add_line(f'<li title="P,,">{item[1]}</li>')
+
+add_line('</ol>')
+if not snip.c:
+	snip.rv = snip.rt
+`
+$0
+endsnippet
+
+
+snippet mmtextarea "Insert a textarea with word count"
+<textarea style="width: 442px; height: 75px;" class="required query_count_words" title="P,${1:ANSWER},"> </textarea>
+endsnippet
+
+
+snippet mmmatch "Match the top with the bottom"
+`!p
+# For the answers, the top is given as a number, and then there is a dropdown to select which bottom answer is correct.
+
+snip.rt = ''
+
+def add_line(line):
+	snip.rt += line + '\n'
+
+top,bottom = snip.v.text.strip().split('---\n')
+top = top.strip().split('\n')
+bottom = bottom.strip().split('\n')
+n = len(top)
+
+add_line('<div class="matching-frame required">')
+add_line('<ol class="matching-list">')
+
+for line in top:
+	line = line.strip()
+	add_line(f"<li>{line}</li>")
+
+add_line('</ol>')
+
+bottom_list = []
+for i,item in enumerate(bottom):
+	bottom_list.append((i,item.strip()))
+
+import random
+random.shuffle(bottom_list)
+
+add_line(f'<ol class="matchingselection matching-count{n} required" title="P1,REPLACEME,">')
+for item in bottom_list:
+	num,text = item	
+	ch = chr(num+97)
+	add_line(f'<li title="P,,">{text}</li><!--{num+1}-->')
+
+answer_key = ''
+for i in range(0,n):
+	for x, item in enumerate(bottom_list):
+		if i == item[0]:
+			answer_key += f"{chr(x+97)}%2C"
+
+snip.rt = snip.rt.replace('REPLACEME', answer_key[:-3])
+add_line('</ol>')
+add_line('</div>')
+
+
+if not snip.c:
+	snip.rv = snip.rt.strip()
+`
+$0
+
+endsnippet
+
+
+

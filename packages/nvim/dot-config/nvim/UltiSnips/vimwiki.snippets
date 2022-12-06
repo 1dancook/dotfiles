@@ -1,0 +1,79 @@
+snippet kanji "create a new kanji file for notes"
+`!p
+# example line:
+#- 夏 | summer | カ、（ゲ）、なつ
+
+snip.rt=''
+text = snip.v.text.strip()
+text = text.replace('- ', '')
+head, meaning, readings = text.split(' | ')
+head = head.replace('[','').replace(']','')
+readings = readings.split('、')
+
+snip.rt += '---\n'
+snip.rt += f'kanji: {head}\n'
+snip.rt += f'meaning: {meaning}\n'
+snip.rt += f'readings: {readings}\n'
+snip.rt += '---\n\n'
+snip.rt += f'# {head}'
+snip.rt += '\n\n'
+snip.rt += f'Main meaning: \`{meaning}\`\n\n'
+snip.rt += '## Onyoumi\n\n' 
+snip.rt += '## Kunyoumi\n\n' 
+snip.rt += 'TODO: sort these readings\n\n' 
+for reading in readings:
+    reading = reading.strip()
+    snip.rt += f'- [[#{reading}]]\n'
+snip.rt += '\n## Exceptions\n\n'
+
+for reading in readings:
+    reading = reading.strip()
+    snip.rt += f'## {reading}\n\n'
+
+if not snip.c:
+	snip.rv = snip.rt.strip()
+`
+$0
+endsnippet
+
+snippet word "create a new word file for notes"
+`!p
+# example line:
+#- [[六・ろく]] - six
+
+snip.rt=''
+text = snip.v.text.strip()
+text = text.replace('[', '')
+head = text.split(']')[0]
+head = head.replace('- ', '')
+head = head.replace(']', '')
+
+snip.rt += f'# {head}'
+snip.rt += '\n\n'
+snip.rt += '## Notes\n'
+
+if not snip.c:
+	snip.rv = snip.rt.strip()
+`
+$0
+endsnippet
+
+snippet jw "create a new word reference"
+[[$1・$2]]
+endsnippet
+
+snippet jj "add a japanese word definition"
+$1・$2 - $3
+endsnippet
+
+snippet jx "japanese example sentence + english meaning"
+\`$1\` *$2*
+endsnippet
+
+snippet rb "Ruby html tags"
+<ruby>${VISUAL}<rt>$0</rt></ruby>
+endsnippet
+
+snippet るび
+<ruby>$1<rt>$2</rt></ruby>$0
+endsnippet

@@ -11,3 +11,10 @@ bin:
 
 bin-unstow:
 	stow -D -t $(HOME) bin
+
+nvim:
+	stow --adopt --dotfiles -t $(HOME) nvim
+	git restore .
+
+nvim-unstow:
+	stow -D -t $(HOME) nvim
