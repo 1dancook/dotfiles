@@ -180,7 +180,11 @@ let g:indentguides_tabchar = '|'
 "# BASIC SETTINGS
 
 " Set python3 interpreter path
-let g:python3_host_prog='/usr/local/bin/python3'
+" this is using pyenv
+" see help provider-python
+" pip install pynvim
+" pyenv which python <- use that path here
+let g:python3_host_prog=~/.pyenv/versions/3.11.0/bin/python
 
 " turn off swap files
 set noswapfile
