@@ -7,8 +7,7 @@ echo "Installing Homebrew"
 
 # update path
 
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
-source ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Update homebrew
 brew update

@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# update before continuing
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Install command-line tools using Homebrew.
 
 # Make sure we’re using the latest Homebrew.
