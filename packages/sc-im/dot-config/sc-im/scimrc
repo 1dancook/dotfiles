@@ -1,0 +1,117 @@
+set autocalc
+set external_functions
+set ignorecase
+set truncate
+set newline_action=j
+set default_copy_to_clipboard_cmd="pbcopy <"
+set default_paste_from_clipboard_cmd="pbpaste"
+set exec_lua
+set autobackup=15
+
+
+#newsheet "for.scim.config.theme"
+#movetosheet "for.scim.config.theme"
+#LET A0="<themename"
+#Let A1=@ston(@lua("theme.lua",0))
+#prevsheet
+#delsheet "for.scim.config.theme"
+
+
+DEFINE_COLOR "DARKGRAY" 46 46 46
+DEFINE_COLOR "MEDGRAY" 70 70 70
+DEFINE_COLOR "LIGHTERGRAY" 190 190 190 
+DEFINE_COLOR "COMMENT" 100 100 100
+
+# UI Elements
+COLOR "type=CELL_CONTENT fg=WHITE bg=DEFAULT_COLOR"
+COLOR "type=CELL_ERROR fg=WHITE bg=RED"
+COLOR "type=CELL_FORMAT fg=COMMENT bg=MEDGRAY"
+COLOR "type=CELL_ID fg=BLACK bg=GREEN bold=1"
+COLOR "type=CELL_NEGATIVE fg=RED bg=DEFAULT_COLOR"
+COLOR "type=CELL_SELECTION fg=BLACK bg=LIGHTERGRAY bold=1"
+COLOR "type=CELL_SELECTION_SC bg=GREEN fg=BLACK bold=1"
+COLOR "type=DATEF fg=WHITE bg=DEFAULT_COLOR"
+COLOR "type=ERROR_MSG fg=BLACK bg=YELLOW"
+COLOR "type=EXPRESSION fg=BLUE bg=DEFAULT_COLOR"
+COLOR "type=GRID_ODD fg=WHITE bg=DARKGRAY"
+COLOR "type=HEADINGS fg=WHITE bg=MEDGRAY"
+COLOR "type=HEADINGS_ODD fg=WHITE bg=MEDGRAY"
+COLOR "type=INFO_MSG fg=YELLOW bg=DEFAULT_COLOR bold=0"
+COLOR "type=INPUT fg=WHITE bg=DEFAULT_COLOR"
+COLOR "type=MODE fg=BLUE bg=DEFAULT_COLOR"
+COLOR "type=NORMAL fg=WHITE bg=DEFAULT_COLOR"
+COLOR "type=NUMB fg=WHITE bg=DEFAULT_COLOR"
+COLOR "type=STRG fg=WHITE bg=DEFAULT_COLOR bold=0"
+
+
+
+
+
+# highlighting cells (background color)
+nmap ",hy" ":cellcolor \"bg=YELLOW fg=BLACK\"<cr>"
+vmap ",hy" ":cellcolor \"bg=YELLOW fg=BLACK\"<cr>"
+nmap ",hr" ":cellcolor \"bg=RED fg=BLACK\"<cr>"
+vmap ",hr" ":cellcolor \"bg=RED fg=BLACK\"<cr>"
+nmap ",hb" ":cellcolor \"bg=BLUE fg=BLACK\"<cr>"
+vmap ",hb" ":cellcolor \"bg=BLUE fg=BLACK\"<cr>"
+nmap ",hg" ":cellcolor \"bg=GREEN fg=BLACK\"<cr>"
+vmap ",hg" ":cellcolor \"bg=GREEN fg=BLACK\"<cr>"
+nmap ",hm" ":cellcolor \"bg=MAGENTA fg=BLACK\"<cr>"
+vmap ",hm" ":cellcolor \"bg=MAGENTA fg=BLACK\"<cr>"
+nmap ",hc" ":cellcolor \"bg=CYAN fg=BLACK\"<cr>"
+vmap ",hc" ":cellcolor \"bg=CYAN fg=BLACK\"<cr>"
+nmap ",hw" ":cellcolor \"bg=WHITE fg=BLACK\"<cr>"
+vmap ",hw" ":cellcolor \"bg=WHITE fg=BLACK\"<cr>"
+
+# Mappings for coloring text (leader, (t)ext, (color)
+nmap ",ty" ":cellcolor \"bg=DEFAULT_COLOR fg=YELLOW\"<CR>"
+nmap ",tr" ":cellcolor \"bg=DEFAULT_COLOR fg=RED\"<CR>"
+nmap ",tb" ":cellcolor \"bg=DEFAULT_COLOR fg=BLUE\"<CR>"
+nmap ",tg" ":cellcolor \"bg=DEFAULT_COLOR fg=GREEN\"<CR>"
+nmap ",tm" ":cellcolor \"bg=DEFAULT_COLOR fg=MAGENTA\"<CR>"
+nmap ",tc" ":cellcolor \"bg=DEFAULT_COLOR fg=CYAN\"<CR>"
+nmap ",td" ":cellcolor \"bg=DEFAULT_COLOR fg=DEFAULT_COLOR\"<CR>"
+
+vmap ",ty" ":cellcolor \"bg=DEFAULT_COLOR fg=YELLOW\"<CR>"
+vmap ",tr" ":cellcolor \"bg=DEFAULT_COLOR fg=RED\"<CR>"
+vmap ",tb" ":cellcolor \"bg=DEFAULT_COLOR fg=BLUE\"<CR>"
+vmap ",tg" ":cellcolor \"bg=DEFAULT_COLOR fg=GREEN\"<CR>"
+vmap ",tm" ":cellcolor \"bg=DEFAULT_COLOR fg=MAGENTA\"<CR>"
+vmap ",tc" ":cellcolor \"bg=DEFAULT_COLOR fg=CYAN\"<CR>"
+vmap ",td" ":cellcolor \"bg=DEFAULT_COLOR fg=DEFAULT_COLOR\"<CR>"
+
+# make cell bold
+nmap ",cb" ":cellcolor \"bold=1\"<cr>"
+vmap ",cb" ":cellcolor \"bold=1\"<cr>"
+
+# make cell underline
+nmap ",cu" ":cellcolor \"underline=1\"<cr>"
+vmap ",cu" ":cellcolor \"underline=1\"<cr>"
+
+# unformat
+nmap ",uf" ":unformat"
+vmap ",uf" ":unformat"
+
+# Movement bindings
+# finish editing and move to right. (k is needed because of newline_action=j)
+imap "<TAB>" "<CR>kl" 
+
+# Formatting binds
+nmap "F%" ":format \"##0.##%\"<CR>"
+vmap "F%" ":format \"##0.##%\"<CR>"
+
+# Normal Mode Bindings for School
+## Attendance
+nmap ",ga" "mZ\A<CR>'Z(aLeft)=0.00<CR>'Z,trF%"
+nmap ",gp" "mZ\P<CR>'Z(aLeft)=0.02<CR>'Z,tdF%"
+nmap ",gn" "mZ\NE<CR>'Z(aLeft)=0.01<CR>'Z,tyF%"
+nmap ",gt" "mZ=0.05<CR>'Z,tdF%"
+
+# Filter mapping
+#nmap ",fz" ":addfilter \"#@mycol()=0\"<CR>:filteron @mycol()0:@mycol()1000<CR>"
+#nmap ",fz" ":addfilter \"#@mycol()=0\"<CR>^v#:filteron<CR>"
+#nmap ",fd" ":filteroff<cr>"
+
+
+nmap ",d" "=@ston(@lua(\"date.lua\", 0))<CR>k=<CR>"
+
