@@ -127,7 +127,8 @@ brew install qrencode
 brew install rename
 brew install ripgrep
 brew install ruby
-brew install sc-im
+#brew install sc-im
+brew install --HEAD sc-im --build-from-source
 brew install sox
 brew install stow
 brew install task
