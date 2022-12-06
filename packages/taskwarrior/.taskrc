@@ -1,0 +1,246 @@
+
+# CONTEXTS
+
+context.kodai=project:kodai or +kodai
+context.kodai.write=+kodai
+
+context.bgc=project:bgc or +bgc
+context.bgc.write=+bgc
+
+context.bucket=+idea or +question
+context.bucket.write=+idea
+
+context.home=+home or project:home or +personal
+context.home.write=+home
+
+context.japanese=+japanese or project:japanese
+context.japanese.write=+japanese
+
+context.queue=+learn or +read or +codepractice or +hobby or +queue or +hack
+context.queue.write=+queue
+
+context.tefl=+tefl or project:tefl
+context.tefl.write=+tefl
+# --------------------------
+
+nag=
+
+# Files
+data.location=~/.task
+
+
+# Blocking is default 8 which is a bit high
+urgency.blocking.coefficient=1.0
+# Just because its tagged/annotated doesn't mean its important
+urgency.tags.coefficient=0
+urgency.annotations.coefficient=0
+# Actually urgent tags
+#urgency.user.tag.customer_facing.coefficient=1.0
+#urgency.user.tag.critical.coefficient=2.0
+# Postponed stuff
+urgency.user.tag.postponed.coefficient=-5
+urgency.user.tag.wait.coefficient=-5
+
+#urgency.user.tag.kodai.coeffeicient=+1
+
+
+
+# Report Tweaking
+
+report.all.sort=id+
+report.waiting.filter=+WAITING or +wait
+
+report.active.columns=id,start,start.age,entry.age,depends.indicator,priority,project,tags,recur,wait,scheduled.remaining,due,until,description
+report.active.context=1
+report.active.description=Active tasks
+report.active.filter=status:pending and +ACTIVE
+report.active.labels=ID,Started,Active,Age,D,P,Project,Tags,Recur,W,Sch,Due,Until,Description
+report.active.sort=project+,start+
+
+report.list.context=1
+report.list.description=Most details of tasks
+report.list.filter=status:pending -WAITING -BLOCKED
+report.list.labels=ID,Active,Age,D,P,Project,Tags,R,Sch,Due,Until,Description,Urg
+report.list.columns=id,start.age,entry.age,depends.indicator,priority,project,tags,recur.indicator,scheduled.countdown,due,until.remaining,description.count,urgency
+report.list.sort=start-,due+,project+,urgency-
+
+report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due,until.remaining,description,urgency
+report.next.context=1
+report.next.description=Most urgent tasks
+report.next.filter=status:pending -WAITING limit:page
+report.next.labels=ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,Description,Urg
+report.next.sort=urgency-
+
+report.n.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due,until.remaining,description,urgency
+report.n.context=0
+report.n.description=Most urgent tasks
+report.n.filter=status:pending +next
+report.n.labels=ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,Description,Urg
+report.n.sort=urgency-
+
+report.nodue.columns=id,project,tags,due.relative,description.count,urgency
+report.nodue.context=0
+report.nodue.description=Review Tasks with No Due Date
+report.nodue.filter=status:pending -WAITING -BLOCKED due.none:
+report.nodue.labels=ID,Project,Tags,Due,Description,Urgency
+report.nodue.sort=id+
+
+report.simple.context=1
+report.simple.description=Simple Details of Tasks
+report.simple.filter=status:pending -WAITING -BLOCKED
+report.simple.labels=ID,Description
+report.simple.columns=id,description.count
+#report.simple.sort=start-,due+,project+,urgency-
+report.simple.sort=urgency-
+
+# Case insensitive search
+search.case.sensitive=no
+
+# regex on
+regex=on
+
+
+news.version=2.6.0
+
+confirmation=0
+
+
+# Aliases
+alias.addchild=execute task add "$@" depends:"$(task +LATEST ids)"
+alias.nx=modify +next
+alias.nonx=modify -next
+alias.tod=modify due:today
+alias.tom=modify due:+1day
+alias.tomorrow=modify due:+1day
+alias.nextweek=modify due:+1week
+
+alias.mon=modify due:monday
+alias.tue=modify due:tuesday
+alias.wed=modify due:wednesday
+alias.thu=modify due:thursday
+alias.fri=modify due:friday
+alias.sat=modify due:saturday
+alias.sun=modify due:sunday
+
+alias.pH=modify priority:H
+alias.pM=modify priority:M
+alias.pL=modify priority:L
+
+alias.note=annotate
+alias.wait=annotate +wait
+
+alias.hide=modify wait:+1week
+alias.hidedue=modify wait:due
+
+
+
+
+# COLOR SCHEME
+
+###############################################################################
+#
+# Copyright 2006 - 2021, Tomas Babej, Paul Beckingham, Federico Hernandez.
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+# OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+#
+# https://www.opensource.org/licenses/mit-license.php
+#
+###############################################################################
+
+rule.precedence.color=deleted,completed,active,tag.next,uda.priority,keyword.,tag.,project.,scheduled,due.today,overdue,due,blocked,blocking,recurring,tagged,uda.
+
+# This is a theme that disables all default colors
+# It can be used as template for other themes
+
+# General decoration
+color.label=white bold
+color.label.sort=white bold
+color.alternate=on color237
+color.header=
+color.footnote=
+color.warning=yellow
+color.error=red
+color.debug=blue
+
+# Task state
+color.completed=color247
+color.deleted=color244
+color.active=color0 on blue
+color.recurring=cyan
+color.scheduled=yellow
+color.until=blue
+color.blocked=magenta on color241
+color.blocking=magenta #black on magenta # on color243
+color.tag.WAITING=color249 on color239
+color.tag.wait=color249 on color239
+color.tag.TOMORROW=rgb131
+
+# Project
+color.project.none=
+
+# Priority
+color.uda.priority.H=yellow on color239
+color.uda.priority.M=yellow
+color.uda.priority.L=
+
+# Tags
+color.tag.next=black on yellow
+color.tag.none=
+color.tagged=
+#color.tag.followup=yellow bold
+
+# Due
+color.due=green
+color.due.today=blue
+color.overdue=red
+
+
+# Report: burndown
+color.burndown.done=white on color240
+color.burndown.pending=black on green
+color.burndown.started=black on yellow
+
+# Report: history
+color.history.add=black on green
+color.history.delete=black on red
+color.history.done=black on blue
+
+# Report: summary
+color.summary.background=on color238
+color.summary.bar=on green
+
+# Command: calendar
+color.calendar.due=black on green
+color.calendar.due.today=black on green
+color.calendar.holiday=black on blue
+color.calendar.overdue=black on red
+color.calendar.today=black on yellow
+color.calendar.weekend=color248
+color.calendar.weeknumber=color244
+
+# Command: sync
+color.sync.added=
+color.sync.changed=
+color.sync.rejected=
+
+# Command: undo
+color.undo.after=
+color.undo.before=
+
+context=kodai

@@ -1,0 +1,49 @@
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[user]
+	name = Dan Cook
+	email = cook.r.dan@gmail.com
+[credential]
+	helper = osxkeychain
+[core]
+	editor = nvim
+[diff]
+    tool = default-difftool
+	indentHeuristic = true
+[difftool "default-difftool"]
+    cmd = code --wait --diff --new-window $LOCAL $REMOTE
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = code --wait --new-window $MERGED
+[pager]
+	log = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+	show = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+	diff = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+[interactive]
+	diffFilter = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight
+[color]
+	ui = always
+	branch = false
+	interactive = always
+	diff = always
+	status = always
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	commit = green
+	meta = yellow
+	frag = cyan
+	old = red
+	new = green
+	whitespace = red reverse
+[alias]
+	ll = log --date=human --all --graph --pretty='format:%C(green)%h %C(bold green)%d%C(reset) %C(white)%s%C(magenta) -%an%n         %C(dim white)%ad (%ar)'
+	l = log --oneline --graph --all --decorate -n 15
+	s = status -sb
