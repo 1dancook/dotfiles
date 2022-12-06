@@ -5,7 +5,7 @@ export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';
 
 # use neovim as default editor
-export EDITOR="/usr/local/bin/nvim"
+export EDITOR="nvim"
 
 
 # bat settings
@@ -32,4 +32,9 @@ export NNN_CONTEXT_COLORS='1234' #different context colors
 export NNN_RESTRICT_NAV_OPEN=1 #must use enter to open
 export NNN_USE_EDITOR=1 #use editor, fallback is vim
 
+# For Homebrew
+export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_ENV_HINTS=1
+export HOMEBREW_AUTOREMOVE=1
+export HOMEBREW_NO_ANALYTICS=1
 
