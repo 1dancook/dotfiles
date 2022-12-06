@@ -6,5 +6,5 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 # https://github.com/pascaldevink/spaceship-zsh-theme
 
 echo "Installing 'Spaceship' theme for ohmyzsh"
-curl -o - https://raw.githubusercontent.com/denysdovhan/spaceship-zsh-theme/master/install.zsh | zsh
-
+brew install spaceship
+# brew installed zsh file needs to be sourced
