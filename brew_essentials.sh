@@ -85,7 +85,7 @@ brew install p7zip
 brew install pigz
 brew install pv
 brew install rlwrap
-brew install ssh-copy-id
+#brew install ssh-copy-id
 brew install vbindiff
 brew install zopfli
 
