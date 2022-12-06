@@ -1,3 +1,7 @@
 # ignore nvim plugins
 packages/nvim/.config/nvim/plugged
 packages/nvim/dot-config/nvim/plugged
+packages/w3m/.w3m/cookie
+packages/w3m/.w3m/history
+packages/w3m/dot-w3m/cookie
+packages/w3m/dot-w3m/history
