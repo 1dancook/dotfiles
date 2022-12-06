@@ -9,10 +9,12 @@ plugins=(
   taskwarrior
 )
 
-source ~/.oh-my-zsh/oh-my-zsh.sh
 source ~/.zsh-theme-settings
 source ~/.exports
 source ~/.aliases
 source ~/.path
 source ~/.functions
-source ~/.extras
+source ~/.extras 2> /dev/null
+
+# this should be last
+source ~/.oh-my-zsh/oh-my-zsh.sh
