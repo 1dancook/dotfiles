@@ -1,2 +1,10 @@
-default:
-	echo "hello world"
+install:
+	./install_xcode_command_line_tools.sh
+	./install_homebrew.sh
+	./install_gnu_stow.sh
+	./brew_essentials.sh
+	./install_pyenv_pipx_python.sh
+	./pip_essentials.sh
+	./pipx_essentials.sh
+	./install_node_npm.sh
+	./install_oh_my_zsh.sh
