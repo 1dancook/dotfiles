@@ -16,6 +16,8 @@ pyenv global 3.11
 #echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 #echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 
+echo 'export PATH="$PATH:$HOME/.pyenv/shims"' >> ~/.zprofile # for pyenv
+echo 'export PATH="$PATH:$HOME/.pyenv/bin"' >> ~/.zprofile # for pyenv
 
 # INSTALL PIPX via HOMEBREW
 # https://pypa.github.io/pipx/installation/

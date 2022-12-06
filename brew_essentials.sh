@@ -21,13 +21,13 @@ brew install moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew install findutils
 # Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed --with-default-names
+brew install gnu-sed --with-default-names #there is an error for --with-default-names
 # Install a modern version of Bash.
 brew install bash
 brew install bash-completion2
 
 # Install `wget` with IRI support.
-brew install wget --with-iri
+brew install wget --with-iri #there is an error for --with-iri
 
 # Install GnuPG to enable PGP-signing commits.
 brew install gnupg
@@ -136,12 +136,12 @@ brew install taskd
 brew install tasksh
 brew install tmux
 brew install tor
-brew install unrar
+#brew install unrar # no formula
 brew install unrtf
 brew install w3m
 brew install youtube-dl
 brew install html-xml-utils # https://www.w3.org/Tools/HTML-XML-utils/
-brew install --cask wkhtmltopdf # https://formulae.brew.sh/cask/wkhtmltopdf https://wkhtmltopdf.org/
+brew install --cask wkhtmltopdf # https://formulae.brew.sh/cask/wkhtmltopdf https://wkhtmltopdf.org/ # requires password to install
 
 # Remove outdated versions from the cellar.
 brew cleanup
