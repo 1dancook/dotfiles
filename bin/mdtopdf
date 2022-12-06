@@ -1,0 +1,83 @@
+#!/bin/bash
+
+# Required to Install:
+# Pandoc - https://pandoc.org
+# wkhtmltopdf - https://wkhtmltopdf.org
+
+# This is a fairly simple script to convert markdown to PDF
+# One can specify a CSS file to use. Pandoc will make an HTML file that references the CSS file.
+# Defaults are set for the following:
+# - Margins: 20mm for each side
+# - Stylesheet: "./mdtopdfstyle.css"
+# - Document Size: A4
+
+function mdtopdf () {
+
+  #=== Defaults ===:
+  css="mdtopdfstyle.css"
+  Bottom="20mm"
+  Top="20mm"
+  Right="20mm"
+  Left="20mm"
+  size="A4"
+
+  _buildpdf=1
+
+  local OPTIND # Necessary for getopts in a function
+
+  while getopts ":c:B:T:R:L:s:" o; do
+      case "${o}" in
+          c) 
+              css=${OPTARG} # Stylesheet file
+              ;;
+          B)
+              Bottom=${OPTARG} # Bottom Margin
+              ;;
+          T)
+              Top=${OPTARG} # Top Margin
+              ;;
+          R)
+              Right=${OPTARG} # Right Margin
+              ;;
+          L)
+              Left=${OPTARG} # Left Margin
+              ;;
+          s)
+              size=${OPTARG} # Page Size
+              ;;
+          *)
+              _buildpdf=0
+              ;;
+      esac
+  done
+  shift $((OPTIND-1)) #do this and then I can do something with $@
+
+  if [ -z $1 ]; then
+    _buildpdf=0
+  fi
+
+  # need to strip the name of .md and any path... for the output name
+  if [[ "$_buildpdf" -eq 1 ]]; then
+    tofilename=$(echo $1 | sed -e 's/\.md/\.pdf/g')
+    echo "Converting $1 to $tofilename"
+
+    # Convert MD to HTML with markdown sheet
+    pandoc --from=markdown_mmd+smart \
+          --quiet \
+          --standalone \
+          --to=html \
+          -V css="$css" \
+          --output=_mdtopdftemp.html \
+          "$1"
+
+    # Convert HTML to PDF
+    wkhtmltopdf -B "$Bottom" -T "$Top" -L "$Left" -R "$Right" \
+      -q -s "$size" _mdtopdftemp.html $tofilename
+
+    # Remove the temporary html file
+    rm _mdtopdftemp.html
+  else
+    echo -e "Usage: mdtopdf [-c path/to/stylesheet.css] [-B #mm] [-T #mm] [-R #mm] [-L #mm] [-s Letter|A4] [fromfile.md]"
+  fi
+
+}

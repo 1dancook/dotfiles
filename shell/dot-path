@@ -1,0 +1,12 @@
+# vim: ft=zsh
+# Path
+# Add any paths for executables
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$PATH:/opt/local/bin"
+export PATH="$PATH:/opt/local/sbin"
+export PATH="$PATH:/Library/TeX/texbin"
+#export PATH="$PATH:$HOME/Dropbox/.dotfiles/bin"
+#export PATH="$PATH:$HOME/Dropbox/.dotfiles/bin/py-scripts"
+#export PATH="$PATH:$HOME/Dropbox/.dotfiles/bin/bash-scripts"
+export PATH="$PATH:$HOME/bin" #this will have user scripts from dotfiles
+

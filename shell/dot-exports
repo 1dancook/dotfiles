@@ -1,0 +1,35 @@
+# vim: ft=zsh
+
+# Prefer US English and use UTF-8.
+export LANG='en_US.UTF-8';
+export LC_ALL='en_US.UTF-8';
+
+# use neovim as default editor
+export EDITOR="/usr/local/bin/nvim"
+
+
+# bat settings
+export BAT_THEME="base16"
+
+# Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
+export PYTHONIOENCODING='UTF-8';
+
+# Highlight section titles in manual pages.
+export LESS_TERMCAP_md="${yellow}";
+
+# Don’t clear the screen after quitting a manual page.
+export MANPAGER='less -X';
+
+
+# Avoid issues with `gpg` as installed via Homebrew.
+# https://stackoverflow.com/a/42265848/96656
+# export GPG_TTY=$(tty);
+#
+
+# For NNN terminal file browser
+export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+export NNN_CONTEXT_COLORS='1234' #different context colors
+export NNN_RESTRICT_NAV_OPEN=1 #must use enter to open
+export NNN_USE_EDITOR=1 #use editor, fallback is vim
+
+

@@ -1,0 +1,105 @@
+# vim: ft=zsh
+
+
+
+function n() {
+    # for nnn file browser
+    # this will make it change to the directory on quit
+    #
+    # Block nesting of nnn in subshells
+    if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
+        echo "nnn is already running"
+        return
+    fi
+
+    # The default behaviour is to cd on quit (nnn checks if NNN_TMPFILE is set)
+    # To cd on quit only on ^G, remove the "export" as in:
+    #     NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+    # NOTE: NNN_TMPFILE is fixed, should not be modified
+    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+
+    nnn "$@"
+
+    if [ -f "$NNN_TMPFILE" ]; then
+            . "$NNN_TMPFILE"
+            rm -f "$NNN_TMPFILE" > /dev/null
+    fi
+}
+
+
+
+function mkzip() {
+    # Usage: mkzip <filename> <list of things to zip>
+    # set to recursive by default, doesn't zip up the macos hidden junk
+	zip -r "$1" "${@:2}" -x "*.DS_Store" -x "*.svn" -x "*.idea" -x "*__MACOSX" -x "*.git"
+}
+
+
+
+function teamsatt() {
+    # used for microsoft teams attendance to video meeting
+	# get unique email address from ms teams meeting attendance csv. 
+    # CSV is in UCS-2 format so iconv first converts to UTF-8
+    # cut won't work without converting it
+    # cut -f5 for column 5
+    _FILE="$@"
+    iconv -f UCS-2 -t UTF-8 $_FILE | tail -n +9 | cut -f5 | uniq | sort
+}
+
+
+function htmlesc() {
+    # simple function to html escape < > " ' and &
+    # it uses the clipboard only. copy code, run htmlesc, converted code will be in clipboard
+    # usage: just run htmlesc
+
+	pbpaste | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g; s/'"'"'/\&#39;/g' | pbcopy
+	echo "Escaped. Copied result to Clipboard"
+	
+}
+
+function myip() {
+    # display my internal and public IP address
+	echo "Internal IP: $(ifconfig en0 | grep 'inet ' | cut -d ' ' -f 2)"  # local network IP address
+	echo "Public IP: $(curl https://ipecho.net/plain)" # public ip address (have to use external service)
+}
+
+
+function ql() {
+    # Quick preview the given file, can use space to close it
+	qlmanage -p "$@" &>/dev/null
+}
+
+
+function wifitoggle() {
+    # Toggles Airport Power State
+	status=$(networksetup -getairportpower en0 | cut -d " " -f 4)
+
+	if [ $status == "On" ]; then
+		echo "Turning Wifi OFF"
+		networksetup -setairportpower en0 off
+		else
+			echo "Turning Wifi ON"
+			networksetup -setairportpower en0 on
+	fi
+
+}
+
+function tree() {
+    # tree display (-T) of directory (recursive) using exa
+    # hidden files enabled with -a
+    # (-I) ignore glob patterns separated by pipe
+    # --icons to show icons
+    # directories first with --group-directories-first
+    # --color=always to give color
+    # piped to bat for easy reading (with -p as plain style - no line numbers, no heading etc)
+    exa -T -a -I '.git|node_modules|__pycache__' --icons --group-directories-first --color=always "$@" | bat -p;
+}
+
+
+function fin {
+    # display a notification when a process is done
+    # usage: echo "hi" | fin
+	osascript -e 'display notification "Process Completed" with title "Terminal Notification:"'
+	say "Process Completed"
+}
+

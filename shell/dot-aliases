@@ -1,0 +1,30 @@
+# vim: ft=zsh
+
+###===== A few utilities ======###
+alias reinit='clear; source "$HOME"/.zsrhc'
+
+###===== Overriding default bash commands =====###
+
+alias ls='exa -GFh' # make `ls` better by default- requires exa
+alias lt='exa -T -L 1'
+#alias tree='exa -T' #requires exa
+alias cd.="cd .."
+alias cd..="cd .."
+
+
+
+###===== YOUTUBE-DL STUFF ============
+alias playlist-dl="youtube-dl -i --add-metadata -o '%(title)s.%(ext)s' -f 140 --yes-playlist $@"
+alias audio-dl="youtube-dl --add-metadata -o '%(title)s.%(ext)s' -f 140 $@"
+alias play-pl="mpv --playlist=$HOME/Music/youtubevids.txt --no-video --shuffle --loop-playlist"
+
+
+
+###====== Shortcuts to applications =======
+alias qb='open -a /Applications/qutebrowser.app' #open qutebrowser with right $PATH
+alias sc='sc-im'
+alias ej='trans en:ja ${}'
+alias je='trans ja:en ${}'
+
+
+

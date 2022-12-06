@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+
+
+function bible () {
+
+
+_md="1" # default is markdown formated output
+_verse="1" # default is show verse numbers
+biblesearch_version="esv" # default version is ESV
+
+local OPTIND
+
+while getopts ":v:n" o; do
+	case "${o}" in
+		v) 
+			biblesearch_version=${OPTARG} 
+			;;
+    n)
+      _verse="0"
+      ;;
+		*)
+			echo -e "Usage: bible [-v version] [query]"
+			;;
+	esac
+done
+
+shift $((OPTIND-1)) #do this and then I can do something with $@
+
+biblesearch_term="$@" # use remaining for the query
+
+html=$(curl -L --silent \
+		 --data version="$biblesearch_version" \
+     --data interface="print" \
+     --data-urlencode search="$biblesearch_term" \
+     https://www.biblegateway.com/passage/)
+
+
+result=$(echo $html |
+      hxnormalize -x |
+      hxremove -i "h3" |
+      hxremove -i "h4" |
+      hxremove -i "sup.crossreference" |
+      hxremove -i "div.footnotes" |
+      hxremove -i "div.crossrefs" |
+      hxremove -i "div.publisher-info-bottom" |
+	  hxremove -i "div.passage-other-trans" |
+      hxremove -i "a.icon-audio" |
+      hxremove -i "sup.footnote" |
+      hxselect -i -c "div.passage-content" |
+      sed -e 's/&nbsp\;/ /g' |
+      tr '\n' ' ' |
+      sed -e 's/  //g' |
+      hxselect -i -c '.result-text-style-normal' |
+      sed -e 's/display-version\">[^(]*/\">/g' |
+      sed -e 's|<h1[^>]*> |<h1>|g' |
+      sed -e 's/<p[^>]*>/<p>> /g' | 
+      sed -e 's/display-bcv\">/display-bcv\">> **/g' |
+      sed -e 's/<sup[^>]*>/**/g' |
+      sed -e 's/[[:space:]]<\/sup>/** /g' |
+      sed -e 's/chapternum\">[0-9]\{1,3\}/\">**1** /g' |
+      sed -e 's|[[:space:]]<span class\="passage-">|** |g' |
+      sed -e 's|<div[^>]*>||g' -e 's|</div>||g' |
+      sed -e 's|[[:space:]]<h1>|<h1>|g' |
+      sed -e 's|</p>|  </p>|g' |
+      sed -e 's|</p>[[:space:]]\{0,4\}<h1>|</p>\\n<h1>|g' |
+      sed -e 's|</h1>|  </h1>\\n|g' -e 's|</p>|</p>\\n>\\n|g' |
+      if [ $_verse -eq 0 ]; then sed -e 's|\*\*[0-9]\{1,3\}\*\* ||g'; else cat; fi | 
+      sed -e 's|<[^>]*>||g' | 
+      sed -e 's|[[:space:]]\{1,3\}>|>|g' -e 's|>  |> |g'
+      )
+
+set -f #stop globbing
+
+highlight='\\033[1;31m' #red
+reset='\\033[0m'
+
+echo -e "$result" | pbcopy
+
+highlighted_output=$(echo "$result" | sed -e "s|[[:space:]]\*\*| $highlight|g" -e "s|\*\*[[:space:]]|$reset |g" | sed -e 's|^>||g' -e 's|\\n> |\\n|g' -e 's|>\\n|\\n|g')
+
+echo -e $highlighted_output
+
+set +f #turn on globbing
+
+
+}
+
+
