@@ -9,13 +9,6 @@ plugins=(
   taskwarrior
 )
 
-
-# some stuff for pyenv
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
-
-
 source ~/.oh-my-zsh/oh-my-zsh.sh
 source ~/.zsh-theme-settings
 source ~/.exports
