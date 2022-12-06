@@ -6,8 +6,8 @@ brew install pyenv
 
 echo "Installing python via pyenv"
 # below will install 3.10's most recent version
-pyenv install 3.10
-pyenv global 3.10
+pyenv install 3.11
+pyenv global 3.11
 
 # Below commands are for setting up env variables properly in SHELL
 
