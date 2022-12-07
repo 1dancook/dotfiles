@@ -11,7 +11,7 @@
 # - Stylesheet: "./mdtopdfstyle.css"
 # - Document Size: A4
 
-function mdtopdf () {
+#function mdtopdf () {
 
   #=== Defaults ===:
   css="mdtopdfstyle.css"
@@ -23,7 +23,7 @@ function mdtopdf () {
 
   _buildpdf=1
 
-  local OPTIND # Necessary for getopts in a function
+  #local OPTIND # Necessary for getopts in a function
 
   while getopts ":c:B:T:R:L:s:" o; do
       case "${o}" in
@@ -80,4 +80,4 @@ function mdtopdf () {
     echo -e "Usage: mdtopdf [-c path/to/stylesheet.css] [-B #mm] [-T #mm] [-R #mm] [-L #mm] [-s Letter|A4] [fromfile.md]"
   fi
 
-}
+#}

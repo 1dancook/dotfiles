@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 
-function bible () {
+#function bible () {
 
 
 _md="1" # default is markdown formated output
 _verse="1" # default is show verse numbers
 biblesearch_version="esv" # default version is ESV
 
-local OPTIND
+#local OPTIND
 
 while getopts ":v:n" o; do
 	case "${o}" in
@@ -83,6 +83,6 @@ echo -e $highlighted_output
 set +f #turn on globbing
 
 
-}
+#}
 
 
