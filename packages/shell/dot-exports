@@ -29,7 +29,7 @@ export MANPAGER='less -X';
 # For NNN terminal file browser
 export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
 export NNN_CONTEXT_COLORS='1234' #different context colors
-export NNN_RESTRICT_NAV_OPEN=1 #must use enter to open
+export NNN_RESTRICT_NAV_OPEN=0 #must use enter to open
 export NNN_USE_EDITOR=1 #use editor, fallback is vim
 
 # For Homebrew

@@ -21,5 +21,11 @@ These are the stow packages. Use the `install.sh` or `uninstall.sh` scripts in t
 ## ~/.extras
 Use this for anything that is local to a machine. This file doesn't exist in the repo.
 
+## Git diff-highlight issue
+See [here](https://github.com/Homebrew/homebrew-core/issues/15588) about the issue.
 
+`echo "$(brew --prefix git)/share/git-core/contrib/diff-highlight/diff-highlight"`
 
+Should give the right directory. Seems to be symlinked.
+
+But where does it go!?

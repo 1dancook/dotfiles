@@ -20,11 +20,13 @@
 [mergetool "vscode"]
 	cmd = code --wait --new-window $MERGED
 [pager]
-	log = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
-	show = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
-	diff = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+    # /opt/homebrew/Cellar/git/2.38.1/share/git-core/contrib/diff-highlight
+    # somehow it would be good to make this dynamic rather than hard coding the git version
+	log = /opt/homebrew/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+	show = /opt/homebrew/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+	diff = /opt/homebrew/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
 [interactive]
-	diffFilter = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight
+	diffFilter = /opt/homebrew/opt/git/share/git-core/contrib/diff-highlight/diff-highlight
 [color]
 	ui = always
 	branch = false
