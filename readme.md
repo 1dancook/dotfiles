@@ -29,3 +29,19 @@ See [here](https://github.com/Homebrew/homebrew-core/issues/15588) about the iss
 Should give the right directory. Seems to be symlinked.
 
 But where does it go!?
+
+## Files and what they are for:
+
+In shell-files:
+
+- `dot-functions` are for shell functions
+- `dot-path` is for any path I need to add
+- `dot-exports` is for EXPORT
+- `dot-aliases` for aliases
+- `dot-zshrc` 
+- `dot-zprofile`
+
+Another that will be sourced is `~/.extra` which can contain anything that I don't want to be committed.
+
+
+
