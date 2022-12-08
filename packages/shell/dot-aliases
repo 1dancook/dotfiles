@@ -27,4 +27,5 @@ alias ej='trans en:ja ${}'
 alias je='trans ja:en ${}'
 
 
-
+###===== Utilities / Etc ==========
+alias playfzf='fzf --bind "enter:execute(mpv {})"'
