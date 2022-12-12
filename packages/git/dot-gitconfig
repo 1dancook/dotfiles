@@ -49,3 +49,5 @@
 	ll = log --date=human --all --graph --pretty='format:%C(green)%h %C(bold green)%d%C(reset) %C(white)%s%C(magenta) -%an%n         %C(dim white)%ad (%ar)'
 	l = log --oneline --graph --all --decorate -n 15
 	s = status -sb
+[advice]
+	addIgnoredFile = false
