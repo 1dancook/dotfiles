@@ -282,7 +282,8 @@ highlight Folded ctermbg=239
 
 "# MAPPINGS
 "## ESC in input mode change keyboard to US layout
-inoremap <ESC> <ESC>:call system("xkbswitch -se 'US'")<CR>:echon ''<CR>
+" needs executable built from github repo: 1dancook/kbswitch 
+inoremap <ESC> <ESC>:execute 'silent! !kbswitch com.apple.keylayout.ABC'<CR>:echon ''<CR>
 
 "## Help
 autocmd FileType help noremap <buffer><silent> q :q<cr>
