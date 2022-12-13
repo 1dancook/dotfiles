@@ -1,7 +1,7 @@
 # vim: ft=zsh
 
 ###===== A few utilities ======###
-alias reinit='clear; source "$HOME"/.zsrhc'
+alias reinit='clear; source "$HOME"/.zshrc'
 
 ###===== Overriding default bash commands =====###
 
@@ -28,4 +28,4 @@ alias je='trans ja:en ${}'
 
 
 ###===== Utilities / Etc ==========
-alias playfzf='fzf --bind "enter:execute(mpv {})"'
+alias playfzf='fd -e mp3 | sort | fzf --reverse -m --bind "enter:execute-multi(mpv {} --pause)" --border --prompt="Query > " --marker="+" --border-label="Play with MPV" --border-label-pos=3'
