@@ -28,4 +28,4 @@ alias je='trans ja:en ${}'
 
 
 ###===== Utilities / Etc ==========
-alias playfzf='fd -e mp3 | sort | fzf --reverse -m --bind "enter:execute-multi(mpv {} --pause)" --border --prompt="Query > " --marker="+" --border-label="Play with MPV" --border-label-pos=3'
+alias playfzf='fd -e mp3 | sort | fzf --reverse --bind "enter:execute(mpv {})" --border --prompt="Query > " --marker="+" --border-label="Play with MPV" --border-label-pos=3'
