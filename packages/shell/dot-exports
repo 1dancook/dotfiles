@@ -22,7 +22,9 @@ export PYTHONIOENCODING='UTF-8';
 export LESS_TERMCAP_md="${yellow}";
 
 # Don’t clear the screen after quitting a manual page.
-export MANPAGER='less -X';
+# adds coloring for certain things. see man less
+export MANPAGER="/usr/bin/less -X -R --use-color -DSky -Ddg -Dub"
+
 
 
 # Avoid issues with `gpg` as installed via Homebrew.
