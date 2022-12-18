@@ -1,5 +1,7 @@
 # Setup and Config Files (Dotfiles)
 
+These are my dotfiles. If you stumble on this there might be something useful that you can use, but I'd encourage you to make your own rather than copy blindly. There are a number of things that are specific to my workflow.
+
 ## Setup Steps for New Machine
 
 2. Running `git --version` in the terminal will prompt to install command line tools. Do that. This takes several minutes (4-5 for download, ~10m for install). Does not require a restart.
