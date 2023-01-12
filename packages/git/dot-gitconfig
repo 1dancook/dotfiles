@@ -11,14 +11,14 @@
 [core]
 	editor = nvim
 [diff]
-    tool = default-difftool
+    tool = vimdiff
 	indentHeuristic = true
-[difftool "default-difftool"]
-    cmd = code --wait --diff --new-window $LOCAL $REMOTE
+[difftool "vimdiff"]
+    path = nvim
 [merge]
-	tool = vscode
-[mergetool "vscode"]
-	cmd = code --wait --new-window $MERGED
+    tool = vimdiff
+[mergetool "vimdiff"]
+    path = nvim
 [pager]
     # /opt/homebrew/Cellar/git/2.38.1/share/git-core/contrib/diff-highlight
     # somehow it would be good to make this dynamic rather than hard coding the git version
