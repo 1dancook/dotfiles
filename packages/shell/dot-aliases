@@ -16,7 +16,6 @@ alias cd..="cd .."
 ###===== YOUTUBE-DL STUFF ============
 alias playlist-dl="youtube-dl -i --add-metadata -o '%(title)s.%(ext)s' -f 140 --yes-playlist $@"
 alias audio-dl="youtube-dl --add-metadata -o '%(title)s.%(ext)s' -f 140 $@"
-alias play-pl="mpv --playlist=$HOME/Music/youtubevids.txt --no-video --shuffle --loop-playlist"
 
 
 

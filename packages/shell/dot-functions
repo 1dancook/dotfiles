@@ -103,3 +103,11 @@ function fin {
 	say "Process Completed"
 }
 
+
+
+function commit-history() {
+    # show the commit / diff history of a file in a git repo
+    # must provide file path
+    git log --follow --date=human --all --pretty='format:%C(green)%h %C(dim white)%ad %C(magenta)%an %C(white)%s' $1 | 
+        fzf --ansi --reverse --preview-window=down,85% --preview="git show --date=human --pretty='%C(green)%H%n  %C(white)%ad by %C(magenta)%an (%ae)%n  %C(dim white)Message:%C(reset)%C(blue) %s%n %C(bold green)%d%C(reset)' {1} $1" 
+}
