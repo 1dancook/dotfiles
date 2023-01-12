@@ -325,6 +325,8 @@ nnoremap <C-l> <C-w>l " go to window right
 "## Keep selection after indent/outdent
 vnoremap < < gv
 vnoremap > > gv
+nnoremap < <<
+nnoremap > >>
 
 "## Insertions
 " insert date:
