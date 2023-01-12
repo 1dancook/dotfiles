@@ -126,6 +126,7 @@ brew install neovim
 brew install nnn
 brew install node
 brew install pandoc
+brew install homebrew/cask/basictex    # see install instructions for pandoc https://pandoc.org/installing.html#macos
 brew install qrencode
 brew install rename
 brew install ripgrep
