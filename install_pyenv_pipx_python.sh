@@ -25,3 +25,7 @@ eval "$(pyenv init -)"
 echo "Installing pipx via Homebrew"
 brew install pipx
 pipx ensurepath
+
+
+# Install Poetry
+curl -sSL https://install.python-poetry.org | python3 -
