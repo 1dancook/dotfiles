@@ -5,6 +5,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="$PATH:/opt/local/bin"
 export PATH="$PATH:/opt/local/sbin"
 export PATH="$PATH:/usr/local/sbin"
+export PATH="$PATH:/Library/TeX/texbin" # for pandoc latex
 eval "$(/opt/homebrew/bin/brew shellenv)" # for homebrew
 export PATH="$PATH:$HOME/.pyenv/shims" # for pyenv
 export PATH="$PATH:$HOME/.pyenv/bin" # for pyenv
