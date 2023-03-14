@@ -14,6 +14,7 @@ pipx install jupyterlab # https://jupyter.org/install
 pipx install notebook #jupyter notebook
 pipx install ipython
 pipx install visidata
+pipx install csvkit # csvkit.readthedocs.io
 
 # PDFMiner
 # https://pdfminersix.readthedocs.io/en/latest/

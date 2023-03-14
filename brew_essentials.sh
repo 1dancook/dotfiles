@@ -148,6 +148,8 @@ brew install html-xml-utils # https://www.w3.org/Tools/HTML-XML-utils/
 brew install --cask wkhtmltopdf # https://formulae.brew.sh/cask/wkhtmltopdf https://wkhtmltopdf.org/ # requires password to install
 brew install gh #github cli
 brew install entr # https://github.com/eradman/entr  run commands on file changes
+brew install pdfcpu #https://pdfcpu.io     https://github.com/pdfcpu/pdfcpu    PDF toolkit
+brew install wget
 
 # Remove outdated versions from the cellar.
 brew cleanup
