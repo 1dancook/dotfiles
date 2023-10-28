@@ -132,7 +132,8 @@ Plug 'mengelbrecht/lightline-bufferline' " for bufferline support
 Plug 'ryanoasis/vim-devicons'
 
 " highlighting etc. for python jinja templates
-Plug 'lepture/vim-jinja'
+" Plug 'lepture/vim-jinja' <- this one gives me a lot of problems it seems
+Plug 'Glench/Vim-Jinja2-Syntax'
 
 " goyo and limelight for focused writing.
 Plug 'junegunn/goyo.vim'
