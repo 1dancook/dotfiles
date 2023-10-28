@@ -28,3 +28,6 @@ alias je='trans ja:en ${}'
 
 ###===== Utilities / Etc ==========
 alias playfzf='fd -e mp3 | sort | fzf --reverse --bind "enter:execute(mpv {})" --border --prompt="Query > " --marker="+" --border-label="Play with MPV" --border-label-pos=3'
+
+###====== Some things for Git ========
+alias gac="git add .; git commit $@"
