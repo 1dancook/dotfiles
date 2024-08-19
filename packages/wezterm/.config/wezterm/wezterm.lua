@@ -21,6 +21,9 @@ config.set_environment_variables = {
 	PATH = read_zsh_path(),
 }
 
+config.exit_behavior = "CloseOnCleanExit"
+config.exit_behavior_messaging = "Terse"
+
 -- color scheme
 -- config.color_scheme = 'Snazzy (base16)'
 config.color_scheme = "tokyonight-storm"
@@ -207,6 +210,13 @@ config.keys = {
 		action = wezterm.action.SpawnCommandInNewTab({ args = { "nvim", wezterm.config_file } }),
 	},
 	{ mods = "OPT", key = "J", action = wezterm.action.SpawnCommandInNewTab({ args = { "weztermjournal" } }) },
+	{ mods = "OPT", key = "p", action = wezterm.action.SpawnCommandInNewTab({ args = { "weztermscratch" } }) },
+	{
+		mods = "OPT",
+		key = "n",
+		action = wezterm.action.SpawnCommandInNewTab({ args = { "nvim", "/tmp/scratch.txt" } }),
+	},
+	{ mods = "OPT", key = "c", action = wezterm.action.SpawnCommandInNewTab({ args = { "weztermcal" } }) },
 }
 
 return config
