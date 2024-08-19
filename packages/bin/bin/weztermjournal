@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# This script is to use with wezterm
+# It will open a new journal file for the current date
+# Also, it will go to the last line in the file and enter insert mode
+
+# Set the working directory
+cd ~/repos/dnb || {
+  echo "Failed to change directory to ~/repos/dnb"
+  exit 1
+}
+
+# Get the current date in YYYYMMDD format
+current_date=$(date +"%Y%m%d")
+
+# Get the current date in YYYY-MM-DD format for the markdown title
+markdown_date=$(date +"%Y-%m-%d")
+
+# Define the filename
+filename="${current_date}-JOURNAL.md"
+
+if [ -f "$filename" ]; then
+  # If the file exists, open it in nvim, go to the end, and start insert mode
+  # first, add some new lines
+  echo -e "\n\n" >>"$filename"
+  nvim + +startinsert "$filename"
+else
+  # If the file doesn't exist, create it with the markdown title
+  echo -e "---\ndate: ${markdown_date}\ntitle: Journal\n---\n\n" >"$filename"
+  # Open the file in nvim, go to the end, and start insert mode
+  nvim + +startinsert "$filename"
+fi
