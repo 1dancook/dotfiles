@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# A simple script to use for wezterm to print the calendar
+# with a keyboard shortcut, i.e. ALT+c
+
+cal -3
+false # keep the window open with the default behavior of CloseOnCleanExit
