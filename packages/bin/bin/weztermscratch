@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# A simple script to use for wezterm to quickly edit the pasteboard in neovim
+# With wezterm default behavior, SpawnCommandInNewTab will open a new tab with this, and it will close when done.
+
+# First, paste into a temp file
+
+pbpaste > /tmp/scratchpaste.txt
+
+# open it for editing
+
+nvim /tmp/scratchpaste.txt   # hint, do some edits, then ZZ
+
+# then copy the contents back to the clipboard after nvim is closed
+
+bat /tmp/scratchpaste.txt | pbcopy
