@@ -89,7 +89,6 @@ brew install rlwrap
 brew install vbindiff
 brew install zopfli
 
-
 # Other things I have used before
 brew install aspell
 brew install bat
@@ -100,7 +99,7 @@ brew install cmus
 brew install curl
 brew install enca
 brew install exa
-brew install tree # needed for exa -T
+brew install tree            # needed for exa -T
 brew install translate-shell # trans -> https://www.soimort.org/translate-shell/
 brew install fd
 brew install gcc
@@ -126,7 +125,7 @@ brew install neovim
 brew install nnn
 brew install node
 brew install pandoc
-brew install homebrew/cask/basictex    # see install instructions for pandoc https://pandoc.org/installing.html#macos
+brew install homebrew/cask/basictex # see install instructions for pandoc https://pandoc.org/installing.html#macos
 brew install qrencode
 brew install rename
 brew install ripgrep
@@ -144,12 +143,20 @@ brew install tor
 brew install unrtf
 brew install w3m
 brew install youtube-dl
-brew install html-xml-utils # https://www.w3.org/Tools/HTML-XML-utils/
+brew install html-xml-utils     # https://www.w3.org/Tools/HTML-XML-utils/
 brew install --cask wkhtmltopdf # https://formulae.brew.sh/cask/wkhtmltopdf https://wkhtmltopdf.org/ # requires password to install
-brew install gh #github cli
-brew install entr # https://github.com/eradman/entr  run commands on file changes
-brew install pdfcpu #https://pdfcpu.io     https://github.com/pdfcpu/pdfcpu    PDF toolkit
+brew install gh                 #github cli
+brew install entr               # https://github.com/eradman/entr  run commands on file changes
+brew install pdfcpu             #https://pdfcpu.io     https://github.com/pdfcpu/pdfcpu    PDF toolkit
 brew install wget
+brew install ocrmypdf
+brew install --cask wezterm@nightly
+brew install lazygit
+
+#things to use for typst
+brew install typst
+brew install typstyle # file formatting
+brew install tinymist # preview, LSP, etc.
 
 # Remove outdated versions from the cellar.
 brew cleanup
