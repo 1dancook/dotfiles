@@ -5,11 +5,11 @@
 
 # First, paste into a temp file
 
-pbpaste > /tmp/scratchpaste.txt
+pbpaste >/tmp/scratchpaste.txt
 
 # open it for editing
 
-nvim /tmp/scratchpaste.txt   # hint, do some edits, then ZZ
+nvim /tmp/scratchpaste.txt # hint, do some edits, then ZZ
 
 # then copy the contents back to the clipboard after nvim is closed
 
