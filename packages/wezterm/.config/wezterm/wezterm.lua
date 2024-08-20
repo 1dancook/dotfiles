@@ -25,9 +25,10 @@ config.exit_behavior = "CloseOnCleanExit"
 config.exit_behavior_messaging = "Terse"
 
 -- color scheme
--- config.color_scheme = 'Snazzy (base16)'
-config.color_scheme = "tokyonight-storm"
-local tab_bar_bg = wezterm.color.parse("black")
+local scheme = "tokyonight-storm"
+config.color_scheme = scheme
+local scheme_bg = wezterm.color.parse(wezterm.get_builtin_color_schemes()[scheme].background)
+local tab_bar_bg = scheme_bg:darken(0.9) --wezterm.color.parse("black")
 
 -- font
 config.font = wezterm.font("JetBrains Mono")
@@ -56,17 +57,21 @@ config.window_padding = {
 }
 
 config.colors = {
-	split = "#5533ee",
+	split = scheme_bg:lighten(0.8),
 	tab_bar = {
 		inactive_tab_edge = tab_bar_bg,
 
 		active_tab = {
-			bg_color = "#444444",
-			fg_color = "#cccccc",
+			bg_color = scheme_bg:lighten(0.15),
+			fg_color = scheme_bg:lighten(0.8),
 		},
 		inactive_tab = {
-			bg_color = "#222222",
-			fg_color = "#999999",
+			bg_color = scheme_bg:darken(0.3),
+			fg_color = scheme_bg:lighten(0.6),
+		},
+		inactive_tab_hover = {
+			bg_color = scheme_bg:lighten(0.1),
+			fg_color = scheme_bg:lighten(0.5),
 		},
 	},
 }
