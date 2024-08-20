@@ -1,0 +1,4 @@
+# see: https://github.com/LazyVim/LazyVim/discussions/4094
+# this is really here to disable the long line warnings for markdownlint-cli2
+config:
+  MD013: false
