@@ -41,7 +41,7 @@ return {
       ["<CR>"] = cmp.config.disable,
 
       -- set control-y to complete
-      ["<C-y>"] = LazyVim.cmp.confirm({ select = true }),
+      ["<C-l>"] = LazyVim.cmp.confirm({ select = true }),
     })
   end,
 }
