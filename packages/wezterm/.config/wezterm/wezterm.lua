@@ -4,6 +4,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- TODO: full size the gui window
+-- TODO: install and implement https://github.com/MLFlexer/resurrect.wezterm
 
 -- get the $PATH from my zsh
 local function read_zsh_path()
