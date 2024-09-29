@@ -215,14 +215,9 @@ config.keys = {
 		key = ",",
 		action = wezterm.action.SpawnCommandInNewTab({ args = { "nvim", wezterm.config_file } }),
 	},
-	{ mods = "OPT", key = "J", action = wezterm.action.SpawnCommandInNewTab({ args = { "weztermjournal" } }) },
-	{ mods = "OPT", key = "p", action = wezterm.action.SpawnCommandInNewTab({ args = { "weztermscratch" } }) },
-	{
-		mods = "OPT",
-		key = "n",
-		action = wezterm.action.SpawnCommandInNewTab({ args = { "nvim", "/tmp/scratch.txt" } }),
-	},
-	{ mods = "OPT", key = "c", action = wezterm.action.SpawnCommandInNewTab({ args = { "weztermcal" } }) },
+	{ mods = "SUPER", key = "J", action = wezterm.action.SpawnCommandInNewTab({ args = { "weztermjournal" } }) },
+	{ mods = "SUPER", key = "p", action = wezterm.action.SpawnCommandInNewTab({ args = { "weztermscratch" } }) },
+	{ mods = "SUPER", key = "I", action = wezterm.action.SpawnCommandInNewTab({ args = { "weztermcal" } }) },
 }
 
 return config
