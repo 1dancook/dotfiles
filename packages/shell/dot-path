@@ -10,6 +10,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)" # for homebrew
 export PATH="$PATH:$HOME/.pyenv/shims" # for pyenv
 export PATH="$PATH:$HOME/.pyenv/bin" # for pyenv
 export PATH="$PATH:$HOME/.local/bin" # for pipx
+export PATH="$PATH:$HOME/.cargo/bin" # for rust binaries
 export PATH="$PATH:$HOME/bin" #this will have user scripts from dotfiles
 
 
