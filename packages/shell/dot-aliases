@@ -5,17 +5,19 @@ alias reinit='clear; source "$HOME"/.zshrc'
 
 ###===== Overriding default bash commands =====###
 
-alias ls='exa -GFh' # make `ls` better by default- requires exa
-alias lt='exa -T -L 1'
-#alias tree='exa -T' #requires exa
+alias ls='eza -GFh' # make `ls` better by default- requires eza
+alias lt='eza -T -L 1'
+alias tree='eza -T'
+
+
 alias cd.="cd .."
 alias cd..="cd .."
 
 
 
 ###===== YOUTUBE-DL STUFF ============
-alias playlist-dl="youtube-dl -i --add-metadata -o '%(title)s.%(ext)s' -f 140 --yes-playlist $@"
-alias audio-dl="youtube-dl --add-metadata -o '%(title)s.%(ext)s' -f 140 $@"
+alias playlist-dl="yt-dlp -i --add-metadata -o '%(title)s.%(ext)s' -f 140 --yes-playlist $@"
+alias audio-dl="yt-dlp --add-metadata -o '%(title)s.%(ext)s' -f 140 $@"
 
 
 
