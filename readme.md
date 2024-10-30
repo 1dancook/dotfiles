@@ -19,6 +19,7 @@ Other things to do:
 These are the stow packages. Use the `install.sh` or `uninstall.sh` scripts in the directory.
 
 *NOTE: Stow unfortunately has a problem with dot-something style directories. There are issues filed about this on github but nothing has been done yet (even after a few years). For now, unfortunately, some of the packages are hidden.*
+TODO: new in [Stow 2.4.0](http://git.savannah.gnu.org/cgit/stow.git/tree/NEWS) `--dotfiles` now works with directores
 
 ## ~/.extras
 Use this for anything that is local to a machine. This file doesn't exist in the repo.
