@@ -17,5 +17,8 @@ source ~/.path
 source ~/.functions
 source ~/.extras 2> /dev/null
 
+# for zoxide
+eval "$(zoxide init zsh)"
+
 # this should be last
 source ~/.oh-my-zsh/oh-my-zsh.sh
