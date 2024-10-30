@@ -98,8 +98,8 @@ brew install ffmpeg
 brew install cmus
 brew install curl
 brew install enca
-brew install exa
-brew install tree            # needed for exa -T
+brew install eza # exa discontinued
+#brew install tree            # needed for eza -T -- removed because it relies on exa which is discontinued
 brew install translate-shell # trans -> https://www.soimort.org/translate-shell/
 brew install fd
 brew install gcc
